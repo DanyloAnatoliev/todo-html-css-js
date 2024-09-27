@@ -3,7 +3,7 @@
 ## Used resources
 
 ### Icons
-[https://fonts.google.com/icons](Google Icons)
+[Google Icons](https://fonts.google.com/icons)
 
 ### Font
-[https://fonts.google.com/specimen/Inter?query=inter](Inter font)
+[Inter font](https://fonts.google.com/specimen/Inter?query=inter)
