@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Connecting google icons -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <!-- Connecting CSS -->
+    <link rel="stylesheet" href="./css/fonts.css" />
+    <link rel="stylesheet" href="./css/variables.css" />
+    <link rel="stylesheet" href="./css/base.css" />
+    <link rel="stylesheet" href="./css/main.css" />
+
+    <title>TODO</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <h1>TODO App</h1>
+      <!-- Work in progress: Searchbar to search through your tasks -->
+      <div class="searchbar">
+        <input
+          type="text"
+          id="search"
+          class="search-input"
+          placeholder="Search..."
+        />
+        <span class="material-symbols-outlined search-icon"> search </span>
+      </div>
+      <button class="btn add">
+        <span class="material-symbols-outlined"> add </span>
+        Add task
+      </button>
+      <!-- Wrapper for list items -->
+      <div class="list-wrapper">
+        <!-- Placeholder for list item -->
+        <div class="list-item">
+          <div class="item-top">
+            <span class="item-tag">
+              <span class="material-symbols-outlined item-tag-icon">
+                sell
+              </span>
+              Work
+            </span>
+            <div class="item-options">
+              <button class="btn edit" title="Edit task">
+                <span class="material-symbols-outlined"> edit </span>
+              </button>
+              <button class="btn delete" title="Delete task">
+                <span class="material-symbols-outlined"> delete </span>
+              </button>
+            </div>
+          </div>
+          <h2 class="item-title">Write todo app</h2>
+          <p class="item-description">Write todo app with HTML, CSS and JS.</p>
+          <button class="btn complete">
+            <span class="material-symbols-outlined"> check </span>
+            Complete
+          </button>
+        </div>
+        <!-- Placeholder for completed list item -->
+        <div class="list-item completed">
+          <div class="item-top">
+            <span class="item-tag">
+              <span class="material-symbols-outlined item-tag-icon">
+                sell
+              </span>
+              Work
+            </span>
+            <div class="item-options">
+              <button class="btn edit" title="Edit task">
+                <span class="material-symbols-outlined"> edit </span>
+              </button>
+              <button class="btn delete" title="Delete task">
+                <span class="material-symbols-outlined"> delete </span>
+              </button>
+            </div>
+          </div>
+          <h2 class="item-title">Create repository</h2>
+          <p class="item-description">
+            Create repository for the future todo app.
+          </p>
+          <button class="btn complete">
+            <span class="material-symbols-outlined"> check </span>
+            Complete
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
