@@ -20,6 +20,7 @@ h2 {
 }
 
 input,
-button {
+button,
+textarea {
   font-family: inherit;
 }

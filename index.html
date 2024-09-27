@@ -17,22 +17,94 @@
     <title>TODO</title>
   </head>
   <body>
+    <div class="backdrop hidden">
+      <!-- Form for new task -->
+      <form
+        action="add-new-task"
+        method="get"
+        id="add-task-form"
+        class="form hidden"
+      >
+        <h2>New Task</h2>
+        <div class="form-input">
+          <label for="new-task-title">Title</label>
+          <input
+            type="text"
+            id="new-task-title"
+            placeholder="Groceries"
+            required
+          />
+        </div>
+
+        <div class="form-input">
+          <label for="new-task-description">Description</label>
+          <textarea
+            id="new-task-description"
+            placeholder="Buy some apples."
+          ></textarea>
+        </div>
+        <div class="form-btn-wrapper">
+          <button type="submit" class="btn submit" id="add-new-task-btn">
+            <span class="material-symbols-outlined"> check </span>
+            Add
+          </button>
+          <button class="btn cancel">
+            <span class="material-symbols-outlined"> close </span>
+            Cancel
+          </button>
+        </div>
+      </form>
+
+      <!-- Form for editing existing task -->
+      <form action="edit-task" method="get" id="edit-form" class="form hidden">
+        <!-- Change title to the task's tiele -->
+        <h2>Task</h2>
+        <div class="form-input">
+          <label for="new-task-title">Title</label>
+          <input
+            type="text"
+            id="new-task-title"
+            placeholder="Groceries"
+            required
+          />
+        </div>
+        <div class="form-input">
+          <label for="new-task-description">Description</label>
+          <textarea
+            id="new-task-description"
+            placeholder="Buy some apples."
+          ></textarea>
+        </div>
+        <div class="form-btn-wrapper">
+          <button type="submit" class="btn submit" id="save-edited-task-btn">
+            <span class="material-symbols-outlined"> check </span>
+            Save
+          </button>
+          <button class="btn cancel">
+            <span class="material-symbols-outlined"> close </span>
+            Cancel
+          </button>
+        </div>
+      </form>
+    </div>
     <div class="wrapper">
       <h1>TODO App</h1>
-      <!-- Work in progress: Searchbar to search through your tasks -->
-      <div class="searchbar">
-        <input
-          type="text"
-          id="search"
-          class="search-input"
-          placeholder="Search..."
-        />
-        <span class="material-symbols-outlined search-icon"> search </span>
-      </div>
-      <button class="btn add">
-        <span class="material-symbols-outlined"> add </span>
-        Add task
-      </button>
+      <header class="wrapper-header">
+        <!-- Work in progress: Searchbar to search through your tasks -->
+        <div class="searchbar">
+          <input
+            type="text"
+            id="search"
+            class="search-input"
+            placeholder="Search..."
+          />
+          <span class="material-symbols-outlined search-icon"> search </span>
+        </div>
+        <button class="btn add">
+          <span class="material-symbols-outlined"> add </span>
+          Add task
+        </button>
+      </header>
       <!-- Wrapper for list items -->
       <div class="list-wrapper">
         <!-- Placeholder for list item -->
@@ -53,8 +125,10 @@
               </button>
             </div>
           </div>
-          <h2 class="item-title">Write todo app</h2>
-          <p class="item-description">Write todo app with HTML, CSS and JS.</p>
+          <h2 class="item-title">Create a todo app</h2>
+          <p class="item-description">
+            Create a todo app with HTML, CSS and JS.
+          </p>
           <button class="btn complete">
             <span class="material-symbols-outlined"> check </span>
             Complete
