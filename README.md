@@ -1,3 +1,9 @@
 # TODO LIST MADE WITH HTML, CSS & JS
 
-Not much to say yet.
+## Used resources
+
+### Icons
+[https://fonts.google.com/icons](Google Icons)
+
+### Font
+[https://fonts.google.com/specimen/Inter?query=inter](Inter font)
