@@ -14,15 +14,16 @@
     <link rel="stylesheet" href="./css/base.css" />
     <link rel="stylesheet" href="./css/main.css" />
 
+    <script defer src="./js/scripts.js"></script>
     <title>TODO</title>
   </head>
   <body>
     <div class="backdrop hidden">
       <!-- Form for new task -->
       <form
-        action="add-new-task"
         method="get"
         id="add-task-form"
+        name="add-task-form"
         class="form hidden"
       >
         <h2>New Task</h2>
@@ -31,7 +32,9 @@
           <input
             type="text"
             id="new-task-title"
+            name="new-task-title"
             placeholder="Groceries"
+            autocomplete="off"
             required
           />
         </div>
@@ -44,11 +47,11 @@
           ></textarea>
         </div>
         <div class="form-btn-wrapper">
-          <button type="submit" class="btn submit" id="add-new-task-btn">
+          <button type="submit" class="btn submit" id="submit-new-task">
             <span class="material-symbols-outlined"> check </span>
             Add
           </button>
-          <button class="btn cancel">
+          <button type="button" class="btn cancel" id="close-add-form">
             <span class="material-symbols-outlined"> close </span>
             Cancel
           </button>
@@ -56,31 +59,38 @@
       </form>
 
       <!-- Form for editing existing task -->
-      <form action="edit-task" method="get" id="edit-form" class="form hidden">
+      <form
+        method="get"
+        id="edit-task-form"
+        name="edit-task-form"
+        class="form hidden"
+      >
         <!-- Change title to the task's tiele -->
         <h2>Task</h2>
         <div class="form-input">
           <label for="new-task-title">Title</label>
           <input
             type="text"
-            id="new-task-title"
+            id="edited-task-title"
+            name="edited-task-title"
             placeholder="Groceries"
+            autocomplete="off"
             required
           />
         </div>
         <div class="form-input">
           <label for="new-task-description">Description</label>
           <textarea
-            id="new-task-description"
+            id="edited-task-description"
             placeholder="Buy some apples."
           ></textarea>
         </div>
         <div class="form-btn-wrapper">
-          <button type="submit" class="btn submit" id="save-edited-task-btn">
+          <button type="submit" class="btn submit" id="submit-edited-task">
             <span class="material-symbols-outlined"> check </span>
             Save
           </button>
-          <button class="btn cancel">
+          <button type="button" class="btn cancel">
             <span class="material-symbols-outlined"> close </span>
             Cancel
           </button>
@@ -100,67 +110,15 @@
           />
           <span class="material-symbols-outlined search-icon"> search </span>
         </div>
-        <button class="btn add">
+        <button type="button" class="btn add">
           <span class="material-symbols-outlined"> add </span>
           Add task
         </button>
       </header>
       <!-- Wrapper for list items -->
       <div class="list-wrapper">
-        <!-- Placeholder for list item -->
-        <div class="list-item">
-          <div class="item-top">
-            <span class="item-tag">
-              <span class="material-symbols-outlined item-tag-icon">
-                sell
-              </span>
-              Work
-            </span>
-            <div class="item-options">
-              <button class="btn edit" title="Edit task">
-                <span class="material-symbols-outlined"> edit </span>
-              </button>
-              <button class="btn delete" title="Delete task">
-                <span class="material-symbols-outlined"> delete </span>
-              </button>
-            </div>
-          </div>
-          <h2 class="item-title">Create a todo app</h2>
-          <p class="item-description">
-            Create a todo app with HTML, CSS and JS.
-          </p>
-          <button class="btn complete">
-            <span class="material-symbols-outlined"> check </span>
-            Complete
-          </button>
-        </div>
-        <!-- Placeholder for completed list item -->
-        <div class="list-item completed">
-          <div class="item-top">
-            <span class="item-tag">
-              <span class="material-symbols-outlined item-tag-icon">
-                sell
-              </span>
-              Work
-            </span>
-            <div class="item-options">
-              <button class="btn edit" title="Edit task">
-                <span class="material-symbols-outlined"> edit </span>
-              </button>
-              <button class="btn delete" title="Delete task">
-                <span class="material-symbols-outlined"> delete </span>
-              </button>
-            </div>
-          </div>
-          <h2 class="item-title">Create repository</h2>
-          <p class="item-description">
-            Create repository for the future todo app.
-          </p>
-          <button class="btn complete">
-            <span class="material-symbols-outlined"> check </span>
-            Complete
-          </button>
-        </div>
+        <!-- Default text. Displayed if there's no data -->
+        <h2 class="default-text">Try adding a new task</h2>
       </div>
     </div>
   </body>
