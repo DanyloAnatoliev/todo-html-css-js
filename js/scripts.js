@@ -2,6 +2,8 @@ const backdrop = document.querySelector(".backdrop");
 const addTaskBtn = document.querySelector(".btn.add");
 const addTaskForm = document.getElementById("add-task-form");
 const closeAddForm = document.getElementById("close-add-form");
+const editTaskForm = document.getElementById("edit-task-form");
+const closeEditFormBtn = document.getElementById("close-edit-form");
 const listWrapper = document.querySelector(".list-wrapper");
 
 // Used to open/close form for adding new task
@@ -60,7 +62,7 @@ addTaskForm.addEventListener("submit", handleNewTask);
 
 // Used to render the data from the storage
 function renderData(data) {
-  if (data) {
+  if (data && data.length !== 0) {
     listWrapper.innerHTML = "";
 
     data.forEach(
@@ -73,6 +75,8 @@ function renderData(data) {
           item.description,
         )),
     );
+  } else {
+    listWrapper.innerHTML = `<h2 class="default-text">Try adding a new task</h2>`;
   }
 }
 
@@ -87,10 +91,10 @@ function itemComponent(_id, completed, tag, title, description) {
           ${tag}
         </span>
         <div class="item-options">
-          <button type="button" class="btn edit" title="Edit task">
-            <span class="material-symbols-outlined" onClick="openEditTaskForm(this)"> edit </span>
+          <button type="button" class="btn edit" title="Edit task" onClick="editTask(this)">
+            <span class="material-symbols-outlined"> edit </span>
           </button>
-          <button type="button" class="btn delete" title="Delete task">
+          <button type="button" class="btn delete" title="Delete task" onClick="deleteTask(this)">
             <span class="material-symbols-outlined"> delete </span>
           </button>
         </div>
@@ -122,5 +126,65 @@ function toggleCompleted(target) {
   }
 
   localStorage.setItem("list", JSON.stringify(list));
+  renderData(JSON.parse(localStorage.getItem("list")));
+}
+
+// Used to edit task info
+function openEditForm() {
+  backdrop.classList.remove("hidden");
+  editTaskForm.classList.remove("hidden");
+}
+
+function closeEditForm() {
+  backdrop.classList.add("hidden");
+  editTaskForm.classList.add("hidden");
+}
+
+function editTask(target) {
+  id = Number(target.closest(".list-item").getAttribute("id"));
+  const list = JSON.parse(localStorage.getItem("list"));
+  const editTitle = document.getElementById("edited-task-title");
+  const editDescription = document.getElementById("edited-task-description");
+
+  let task;
+
+  for (i = 0; i < list.length; i++) {
+    if (Number(list[i]._id) === id) {
+      task = list[i];
+      break;
+    }
+  }
+
+  editTitle.value = task.title;
+  editDescription.value = task.description;
+
+  openEditForm();
+
+  editTaskForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    for (i = 0; i < list.length; i++) {
+      if (Number(list[i]._id) === id) {
+        list[i].title = editTitle.value;
+        list[i].description = editDescription.value;
+        break;
+      }
+    }
+    closeEditForm();
+
+    localStorage.setItem("list", JSON.stringify(list));
+    renderData(JSON.parse(localStorage.getItem("list")));
+  });
+}
+
+closeEditFormBtn.addEventListener("click", closeEditForm);
+
+// Used to delete tasks
+function deleteTask(target) {
+  id = Number(target.closest(".list-item").getAttribute("id"));
+  const list = JSON.parse(localStorage.getItem("list"));
+  const newList = list.filter((task) => task._id != id);
+
+  localStorage.setItem("list", JSON.stringify(newList));
   renderData(JSON.parse(localStorage.getItem("list")));
 }
