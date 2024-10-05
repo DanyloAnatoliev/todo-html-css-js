@@ -37,7 +37,6 @@ function handleNewTask(event) {
   const newTask = {
     _id: id,
     completed: false,
-    tag: "Work", // Default tag for now. Add functionality to add tags later
     title: newTitle.value,
     description: newDescription.value,
   };
@@ -70,7 +69,6 @@ function renderData(data) {
         (listWrapper.innerHTML += itemComponent(
           item._id,
           item.completed,
-          item.tag,
           item.title,
           item.description,
         )),
@@ -80,16 +78,11 @@ function renderData(data) {
   }
 }
 
-function itemComponent(_id, completed, tag, title, description) {
+function itemComponent(_id, completed, title, description) {
   return `
     <div class="list-item ${completed ? "completed" : ""}" id="${_id}">
       <div class="item-top">
-        <span class="item-tag">
-          <span class="material-symbols-outlined item-tag-icon">
-            sell
-          </span>
-          ${tag}
-        </span>
+      <h2 class="item-title">${title}</h2>
         <div class="item-options">
           <button type="button" class="btn edit" title="Edit task" onClick="editTask(this)">
             <span class="material-symbols-outlined"> edit </span>
@@ -99,7 +92,6 @@ function itemComponent(_id, completed, tag, title, description) {
           </button>
         </div>
       </div>
-      <h2 class="item-title">${title}</h2>
       <p class="item-description">${description}</p>
       <button type="button" class="btn complete" onClick="toggleCompleted(this)">
         <span class="material-symbols-outlined"> check </span>
@@ -143,6 +135,7 @@ function closeEditForm() {
 function editTask(target) {
   id = Number(target.closest(".list-item").getAttribute("id"));
   const list = JSON.parse(localStorage.getItem("list"));
+  const editFormTitle = document.getElementById("edit-form-title");
   const editTitle = document.getElementById("edited-task-title");
   const editDescription = document.getElementById("edited-task-description");
 
@@ -154,7 +147,8 @@ function editTask(target) {
       break;
     }
   }
-
+  editFormTitle.textContent = task.title;
+  editFormTitle.setAttribute("title", task.title);
   editTitle.value = task.title;
   editDescription.value = task.description;
 
