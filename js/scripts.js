@@ -184,7 +184,7 @@ function deleteTask(target) {
   renderData(JSON.parse(localStorage.getItem("list")));
 }
 
-// Searchbar implementation
+// Search implementation
 function search() {
   const list = JSON.parse(localStorage.getItem("list"));
   const filteredList = list.filter((item) =>
