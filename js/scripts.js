@@ -5,6 +5,7 @@ const closeAddForm = document.getElementById("close-add-form");
 const editTaskForm = document.getElementById("edit-task-form");
 const closeEditFormBtn = document.getElementById("close-edit-form");
 const listWrapper = document.querySelector(".list-wrapper");
+const searchInput = document.getElementById("search-input");
 
 // Used to open/close form for adding new task
 function toggleAddTaskForm() {
@@ -182,3 +183,15 @@ function deleteTask(target) {
   localStorage.setItem("list", JSON.stringify(newList));
   renderData(JSON.parse(localStorage.getItem("list")));
 }
+
+// Searchbar implementation
+function search() {
+  const list = JSON.parse(localStorage.getItem("list"));
+  const filteredList = list.filter((item) =>
+    item.title.toLowerCase().includes(searchInput.value),
+  );
+
+  renderData(filteredList);
+}
+
+searchInput.addEventListener("change", search);
